@@ -8,10 +8,8 @@ services:
       - type: "volume"
         source: "./ssr"
         target: "/etc/ssr"
-    expose:
-      - "443"
-    ports:
-      - "443:443"
+    # To make shadowsocksr finding nginx easier
+    network_mode: "host"
     entrypoint: "python server.py -c /etc/ssr/config.json"
 
   nginx:
