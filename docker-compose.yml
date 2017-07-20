@@ -1,0 +1,27 @@
+version: "3.3"
+
+services:
+  ssr:
+    image: "breakwa11/shadowsocksr"
+    volumes:
+      - type: "volume"
+        source: "./ssr"
+        target: "/etc/ssr"
+    expose:
+      - "443"
+    ports:
+      - "443:443"
+    entrypoint: "python server.py -c /etc/ssr/config.json"
+
+  nginx:
+    image: "nginx:alpine"
+    volumes:
+      - type: "volume"
+        source: "./nginx/conf.d"
+        target: "/etc/nginx/conf.d"
+        read_only: true
+      - type: "volume"
+        source: "./nginx/www"
+        target: "/srv/www"
+        read_only: true
+    network_mode: "host"
