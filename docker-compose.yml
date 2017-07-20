@@ -26,4 +26,8 @@ services:
         source: "./nginx/www"
         target: "/srv/www"
         read_only: true
+      - type: "volume"
+        source: "./nginx/cert"
+        target: "/etc/nginx/cert"
+        read_only: true
     network_mode: "host"
