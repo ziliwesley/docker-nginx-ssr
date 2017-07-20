@@ -1,0 +1,8 @@
+
+# nginx configurations
+nginx/conf.d
+!nginx/conf.d/default.conf
+
+# default web site
+nginx/www
+!nginx/www/index-placeholder.html
