@@ -1,7 +1,8 @@
-version: "3.3"
+version: "3.2"
 
 services:
   ssr:
+    container_name: "shadowsocksr"
     image: "breakwa11/shadowsocksr"
     volumes:
       - type: "volume"
@@ -14,6 +15,7 @@ services:
     entrypoint: "python server.py -c /etc/ssr/config.json"
 
   nginx:
+    container_name: "nginx"
     image: "nginx:alpine"
     volumes:
       - type: "volume"
