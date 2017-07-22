@@ -11,6 +11,7 @@ services:
     # To make shadowsocksr finding nginx easier
     network_mode: "host"
     entrypoint: "python server.py -c /etc/ssr/config.json"
+    restart: "always"
 
   nginx:
     container_name: "nginx"
@@ -30,3 +31,4 @@ services:
         target: "/etc/letsencrypt"
         read_only: true
     network_mode: "host"
+    restart: "always"
